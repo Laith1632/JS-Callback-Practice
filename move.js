@@ -5,11 +5,8 @@ function move(element) {
         element.style.left = left + 'px'
         element.style.bottom = bottom + 'px'
     }
-
-    return {
-        to: moveToCoordinates
-    }
-}
+//----start of my code---- //
+ 
 function moveWithArrowKeys(left, bottom, callback){
     let direction = null;
     let x = left;
@@ -17,8 +14,8 @@ function moveWithArrowKeys(left, bottom, callback){
 
     element.style.left = x + 'px'
     element.style.bottom = y + 'px'
-    
-    function moveCharacter(){ 
+
+    function moveCharacter(){
         if(direction === 'west'){
             x-=1
         }
@@ -34,19 +31,19 @@ function moveWithArrowKeys(left, bottom, callback){
         element.style.left = x + 'px'
         element.style.bottom = y + 'px'
     }
-    
+
     setInterval(moveCharacter, 1)
-    
+
     document.addEventListener('keydown', function(e){
         if(e.repeat) return;
-    
-        if(e.key === 'ArrowLeft'){
+
+        if(e.key === 'Arrowleft'){
             direction = 'west'
         }
         if(e.key === 'ArrowUp'){
             direction = 'north'
         }
-        if(e.key === 'ArrowRight'){
+        if(e.key === 'ArrowRigth'){
             direction = 'east'
         }
         if(e.key === 'ArrowDown'){
@@ -54,9 +51,16 @@ function moveWithArrowKeys(left, bottom, callback){
         }
         callback(direction)
     })
-    
     document.addEventListener('keyup', function(e){
         direction = null
         callback(direction)
     })
 }
+
+    return {
+        to: moveToCoordinates,
+        moveWithArrowKeys: moveWithArrowKeys
+    }
+}
+
+
